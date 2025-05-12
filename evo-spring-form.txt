@@ -2,7 +2,7 @@ A partire dal progetto Form...
 creare un repository remoto git ed effettuare il push del codice.
 
 Effettuare le seguenti evolutive in commit separati:
-1) Aggiungere campi: Aggiungiere all'utente i campi password, conferma password, data di nascita e numero di telefono.
+1) Aggiungere campi: Aggiungere all'utente i campi password, conferma password, data di nascita e numero di telefono.
 2) Controllo dei Nomi Bannati: Controllare che il nome utente non sia presente in una lista di nomi bannati (es. "admin", "root").
 3) Verifica della Lunghezza del Nome: controllare che il nome utente sia di una certa lunghezza minima e massima.
 4) Validazione della Formattazione dell'Email: Assicurarsi che l'email inserita abbia un formato valido (es. con espressioni regolari).
