@@ -1,18 +1,38 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="it">
     <head>
         <title>Registrazione utente 2</title>
     </head>
     <body>
-        <h1>Form Utente 2</h1>
-        <form action="#" th:action="@{/submitForm}" th:object="${utente}" method="post">
-            <label >Nome:</label>
-            <input type="text" th:field="*{nome}" required>
-            <br><br>
-            <label >Email:</label>
-            <input type="email" th:field="*{email}" required>
-            <br><br>
-            <button type="submit">Submit</button>
-        </form>
+    <h1>Form Utente 2</h1>
+    <form action="#" th:action="@{/submitForm}" th:object="${utente}" method="post">
+
+        <label>Nome:</label>
+        <input type="text" th:field="*{nome}" required>
+        <br><br>
+
+        <label>Email:</label>
+        <input type="email" th:field="*{email}" required>
+        <br><br>
+
+        <label>Password:</label>
+        <input type="password" th:field="*{password}" required>
+        <br><br>
+
+        <label>Conferma Password:</label>
+        <input type="password" th:field="*{confermaPassword}" required>
+        <br><br>
+
+        <label>Data di nascita:</label>
+        <input type="date" th:field="*{dataDiNascita}" required>
+        <br><br>
+
+        <label>Telefono:</label>
+        <input type="text" th:field="*{telefono}" required>
+        <br><br>
+
+        <button type="submit">Submit</button>
+
+    </form>
     </body>
 </html>
