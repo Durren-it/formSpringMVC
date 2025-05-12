@@ -1,11 +1,15 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="it">
     <head>
         <title>Risultato</title>
     </head>
     <body>
         <h1>Risultato form utente</h1>
-        <p>Nome: <span th:text="${utente.nome}" >Mario</span></p>
+        <p>Nome: <span th:text="${utente.nome}">Mario</span></p>
         <p>Email: <span th:text="${utente.email}">mario@email.it</span></p>
+        <p>Password: <span th:text="${utente.password}">Password</span></p>
+        <p>Conferma Password: <span th:text="${utente.confermaPassword}">Password</span></p>
+        <p>Data di nascita: <span th:text="${utente.dataDiNascita}">1990-01-01</span></p>
+        <p>Telefono: <span th:text="${utente.telefono}">1234567890</span></p>
     </body>
 </html>
