@@ -22,6 +22,19 @@ public class UtenteController {
 
     @PostMapping("/submitForm")
     public String postForm(@ModelAttribute Utente utente, Model model) {
+        // Nomi bannati
+        String[] nomiBannati = {"admin", "root", "superuser", "administrator", "webmaster", "moderator", "mod",
+                "support", "helpdesk", "system", "sysadmin", "security", "staff", "team", "mail", "noreply",
+                "postmaster", "owner", "manager", "api", "service", "developer", "dev", "console", "backend", "server"};
+
+        // Check nomi bannati
+        for (String nomeBannato : nomiBannati) {
+            if (utente.getNome().equalsIgnoreCase(nomeBannato)) {
+                model.addAttribute("errore", "Il nome \"" + utente.getNome() + "\" non è permesso.");
+                return "error";
+            }
+        }
+
         model.addAttribute("utente", utente);
         return "result";
     }
