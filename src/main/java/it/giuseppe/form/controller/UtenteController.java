@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class UtenteController {
 
@@ -22,6 +25,13 @@ public class UtenteController {
 
     @PostMapping("/submitForm")
     public String postForm(@ModelAttribute Utente utente, Model model) {
+        List<String> errori = new ArrayList<>();
+
+        // Lunghezza consentita per i nomi
+        final int MIN_NAME_LENGTH = 3;
+        final int MAX_NAME_LENGTH = 10;
+
+
         // Nomi bannati
         String[] nomiBannati = {"admin", "root", "superuser", "administrator", "webmaster", "moderator", "mod",
                 "support", "helpdesk", "system", "sysadmin", "security", "staff", "team", "mail", "noreply",
@@ -30,9 +40,20 @@ public class UtenteController {
         // Check nomi bannati
         for (String nomeBannato : nomiBannati) {
             if (utente.getNome().equalsIgnoreCase(nomeBannato)) {
-                model.addAttribute("errore", "Il nome \"" + utente.getNome() + "\" non è permesso.");
-                return "error";
+                errori.add("Il nome " + utente.getNome() + " non è permesso.");
             }
+        }
+
+        // Controllo lunghezza nome
+        int nomeLength = utente.getNome().length();
+        if (nomeLength < MIN_NAME_LENGTH || nomeLength > MAX_NAME_LENGTH) {
+            errori.add("Il nome deve contenere tra " + MIN_NAME_LENGTH + " e " + MAX_NAME_LENGTH + " caratteri.");
+        }
+
+        // Se ci sono errori, mostra la pagina error
+        if (!errori.isEmpty()) {
+            model.addAttribute("errori", errori);
+            return "error";
         }
 
         model.addAttribute("utente", utente);

@@ -5,6 +5,8 @@
     </head>
     <body>
         <h1>Errore nel Form</h1>
-        <p th:text="'Errore: ' + ${errore}">Errore generico</p>
+        <ul>
+            <li th:each="errore : ${errori}" th:text="${errore}">Errore generico</li>
+        </ul>
     </body>
 </html>
