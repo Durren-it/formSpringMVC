@@ -116,6 +116,11 @@ public class UtenteController {
             }
         }
 
+        // Controllo delle password
+        if (!utente.getPassword().equals(utente.getConfermaPassword())) {
+            errori.add("Errore. Le due password non coincidono.");
+        }
+
         // Se ci sono errori, mostra la pagina error
         if (!errori.isEmpty()) {
             model.addAttribute("errori", errori);
